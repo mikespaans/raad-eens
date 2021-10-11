@@ -2,12 +2,15 @@ Getal = 25
 Vraag = 'ja'
 AantalKansen = 1
 Score = 0
+Ronde = 1
+Doorgaan = 'nee'
 
 
 while Vraag == "ja" and AantalKansen <=10:
     VraagGetal = int(input("Raad het getal "))
     AantalKansen = AantalKansen + 1
     WarmKoud = Getal - VraagGetal
+    Warm = VraagGetal - Getal
     if VraagGetal > Getal:
         print ("lager")
     elif VraagGetal < Getal:
@@ -15,21 +18,30 @@ while Vraag == "ja" and AantalKansen <=10:
 
         if WarmKoud <= 50 and WarmKoud > 20:
             print ("Je bent warm")
-        elif WarmKoud <= 20:
+        elif WarmKoud <= 20 and WarmKoud > 0:
             print ("Je bent heel warm")
+
+    if Warm <= 50 and Warm > 20:
+        print ("Je bent warm")
+    elif Warm <= 20 and Warm > 0:
+        print ("Je bent heel warm")
 
     if VraagGetal == Getal:
         print ("Je hebt het getal geraden")
-        Vraag = 'nee'
         Score = Score + 1
         print ("Je score is" , Score)
+        Doorgaan = 'ja'
     elif AantalKansen >= 11:
         print ("Je kansen zijn op en je hebt het getal niet geraden")
         print ("Je score is" , Score)
+        Doorgaan = 'ja'
 
-Opnieuw = input("Wil je opnieuw ja of nee? ")
-if Opnieuw == "ja":
-    Vraag = 'ja'
-    AantalKansen = 1
-elif Opnieuw == "nee":
-    print ("Je bent gestopt je score was", Score)
+    if Doorgaan == 'ja':
+        Opnieuw = input("Wil je opnieuw ja of nee? ")
+        if Opnieuw == "ja": 
+            AantalKansen = 1
+            Ronde = Ronde + 1
+            print ("Ronde" , Ronde)
+        elif Opnieuw == "nee":
+            Vraag = 'nee'
+            print ("Je bent gestopt in Ronde" , Ronde ,"je score was", Score)
