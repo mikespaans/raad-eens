@@ -1,4 +1,5 @@
-Getal = 25
+import random
+Getal = random.randint(0,1000)
 Vraag = 'ja'
 AantalKansen = 1
 Score = 0
@@ -6,7 +7,7 @@ Ronde = 1
 Doorgaan = 'nee'
 
 
-while Vraag == "ja" and AantalKansen <=10:
+while Vraag == "ja" and AantalKansen <=10 and Ronde <= 20:
     VraagGetal = int(input("Raad het getal "))
     AantalKansen = AantalKansen + 1
     WarmKoud = Getal - VraagGetal
@@ -16,7 +17,7 @@ while Vraag == "ja" and AantalKansen <=10:
     elif VraagGetal < Getal:
         print ("Hoger")
 
-        if WarmKoud <= 50 and WarmKoud > 20:
+        if WarmKoud <= 50 and WarmKoud > 20 and Ronde <= 20:
             print ("Je bent warm")
         elif WarmKoud <= 20 and WarmKoud > 0:
             print ("Je bent heel warm")
@@ -42,6 +43,7 @@ while Vraag == "ja" and AantalKansen <=10:
             AantalKansen = 1
             Ronde = Ronde + 1
             print ("Ronde" , Ronde)
+            Getal = random.randint(0,1000)
         elif Opnieuw == "nee":
             Vraag = 'nee'
             print ("Je bent gestopt in Ronde" , Ronde ,"je score was", Score)
